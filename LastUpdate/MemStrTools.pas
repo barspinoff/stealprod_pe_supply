@@ -23,7 +23,7 @@ type
 		procedure InstallJump(Address: Pointer; Direction: Cardinal; NopLength: Integer);
 		function Crypt(s:string;code:boolean):string;
 		function PushEax: Cardinal;
-    function memchr(Buffer: Pointer; C: Byte; Count: Cardinal): Pointer;
+		function memchr(Buffer: Pointer; C: Byte; Count: Cardinal): Pointer;
    end;
    
 	TDint64 = record
@@ -176,9 +176,9 @@ end;
 
 function Utils.StrPos(const Str1, Str2: PChar): PChar; assembler;
 asm
-	PUSH	EDI
-	PUSH	ESI
-	PUSH	EBX
+	PUSH		EDI
+	PUSH		ESI
+	PUSH		EBX
 	MOV		EAX,Str1
 	MOV		EDX,Str2
 	OR		EAX,EAX
@@ -189,34 +189,34 @@ asm
 	MOV		EDI,EDX
 	XOR		AL,AL
 	MOV		ECX,0FFFFFFFFH
-	REPNE	SCASB
+	REPNE		SCASB
 	NOT		ECX
 	DEC		ECX
 	JE		@@2
 	MOV		ESI,ECX
 	MOV		EDI,EBX
 	MOV		ECX,0FFFFFFFFH
-	REPNE	SCASB
+	REPNE		SCASB
 	NOT		ECX
 	SUB		ECX,ESI
 	JBE		@@2
 	MOV		EDI,EBX
 	LEA		EBX,[ESI-1]
-@@1:MOV		ESI,EDX
+@@1:	MOV		ESI,EDX
 	LODSB
-	REPNE	SCASB
+	REPNE		SCASB
 	JNE		@@2
 	MOV		EAX,ECX
-	PUSH	EDI
+	PUSH		EDI
 	MOV		ECX,EBX
-	REPE	CMPSB
+	REPE		CMPSB
 	POP		EDI
 	MOV		ECX,EAX
 	JNE		@@1
 	LEA		EAX,[EDI-1]
 	JMP		@@3
-@@2:XOR		EAX,EAX
-@@3:POP		EBX
+@@2:	XOR		EAX,EAX
+@@3:	POP		EBX
 	POP		ESI
 	POP		EDI
 end;
