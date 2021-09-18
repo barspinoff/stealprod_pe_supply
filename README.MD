@@ -7,6 +7,8 @@ Compiles with Borland Delphi 7
 
 I'm publishing this project because will no more work with it in cause of legacy development environment (hello thiscall and macros), abundance of magical values in code, unstructured memory access, frequently using of inline assembler and common lack of progress in participial sphere since 2020
 
+Also with binaries u can use [the web-part of this project written by Hatrig](https://github.com/Hatrig/Stealprod)
+
 # Features
 * supports R1 & R3 clients (with custom launchers too)
 * collects last nickname, server and some stats (ped skin id, current visible cash, local player score)
